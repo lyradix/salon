@@ -29,10 +29,10 @@ class AppFixtures extends Fixture
 
         $manager->flush();
 
-        // Exécuter le script SQL .sql après l'insertion de l'utilisateur
- 
+        // Exécuter le script SQL data.sql après l'insertion de l'utilisateur
+
         $connection = $manager->getConnection();
-        $sqlFile = __DIR__ . '/'; // Assurez-vous que le chemin est correct
+        $sqlFile = __DIR__ . '/data/data.sql'; // Assurez-vous que le chemin est correct
 
         if (file_exists($sqlFile)) {
             $sql = file_get_contents($sqlFile);
