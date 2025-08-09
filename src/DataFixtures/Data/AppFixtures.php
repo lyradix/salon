@@ -1,13 +1,13 @@
 <?php
 
-namespace App\DataFixtures;
+namespace App\DataFixtures\Data;
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\User; 
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class AppFixtures extends Fixture
+class DataAppFixtures extends Fixture
 {
     private UserPasswordHasherInterface $passwordHasher;
 
@@ -23,7 +23,7 @@ class AppFixtures extends Fixture
         $user->setEmail('admin@salon.com');
         $user->setRoles(['ROLE_ADMIN']);
         $user->setPassword(
-            $this->passwordHasher->hashPassword($user, 'Password123')
+            $this->passwordHasher->hashPassword($user, 'Password123+')
         );
         $manager->persist($user);
 
