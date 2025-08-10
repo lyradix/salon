@@ -30,7 +30,7 @@ class Turnover
 
     #[ORM\Column(length: 255)]
     #[Groups(['turnover:read'])]
-    private ?string $dept_region = null;
+    private ?string $dept = null;
 
     public function getId(): ?int
     {
@@ -73,14 +73,14 @@ class Turnover
         return $this;
     }
 
-    public function getDeptRegion(): ?string
+    public function getDept(): ?string
     {
-        return $this->dept_region;
+        return $this->dept;
     }
 
-    public function setDeptRegion(string $dept_region): static
+    public function setDept(string $dept): static
     {
-        $this->dept_region = $dept_region;
+        $this->dept = $dept;
 
         return $this;
     }

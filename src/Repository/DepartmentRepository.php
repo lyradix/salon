@@ -2,39 +2,39 @@
 
 namespace App\Repository;
 
-use App\Entity\Salons;
+use App\Entity\Department;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Salons>
+ * @extends ServiceEntityRepository<Department>
  */
-class SalonsRepository extends ServiceEntityRepository
+class DepartmentRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Salons::class);
+        parent::__construct($registry, Department::class);
     }
 
     //    /**
-    //     * @return Salons[] Returns an array of Salons objects
+    //     * @return Department[] Returns an array of Department objects
     //     */
     //    public function findByExampleField($value): array
     //    {
-    //        return $this->createQueryBuilder('s')
-    //            ->andWhere('s.exampleField = :val')
+    //        return $this->createQueryBuilder('d')
+    //            ->andWhere('d.exampleField = :val')
     //            ->setParameter('val', $value)
-    //            ->orderBy('s.id', 'ASC')
+    //            ->orderBy('d.id', 'ASC')
     //            ->setMaxResults(10)
     //            ->getQuery()
     //            ->getResult()
     //        ;
     //    }
 
-    //    public function findOneBySomeField($value): ?Salons
+    //    public function findOneBySomeField($value): ?Department
     //    {
-    //        return $this->createQueryBuilder('s')
-    //            ->andWhere('s.exampleField = :val')
+    //        return $this->createQueryBuilder('d')
+    //            ->andWhere('d.exampleField = :val')
     //            ->setParameter('val', $value)
     //            ->getQuery()
     //            ->getOneOrNullResult()

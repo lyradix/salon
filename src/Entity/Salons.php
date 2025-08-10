@@ -21,7 +21,7 @@ class Salons
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
-     #[Groups(['salons:read'])]
+    #[Groups(['salons:read'])]
     private ?string $address = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
@@ -29,16 +29,28 @@ class Salons
     private ?\DateTime $opening_date = null;
 
     #[ORM\Column]
-     #[Groups(['salons:read'])]
+    #[Groups(['salons:read'])]
     private ?int $no_employees_full_time = null;
 
     #[ORM\Column(length: 255)]
-     #[Groups(['salons:read'])]
+    #[Groups(['salons:read'])]
     private ?string $rep_name = null;
 
     #[ORM\Column(length: 255)]
     #[Groups(['salons:read'])]
     private ?string $rep_first_name = null;
+
+    #[ORM\ManyToOne(targetEntity: Department::class)]
+    #[ORM\JoinColumn(name: "dept_fk_id", referencedColumnName: "id")]
+    private ?Department $deptFk = null;
+
+    #[ORM\ManyToOne(targetEntity: Region::class)]
+    #[ORM\JoinColumn(name: "region_FK_id", referencedColumnName: "id")]
+    private ?Region $region = null;
+
+    #[ORM\ManyToOne(targetEntity: Country::class)]
+    #[ORM\JoinColumn(name: "country_FK_id", referencedColumnName: "id")]
+    private ?Country $country = null;
 
     public function getId(): ?int
     {
@@ -113,6 +125,42 @@ class Salons
     public function setRepFirstName(string $rep_first_name): static
     {
         $this->rep_first_name = $rep_first_name;
+
+        return $this;
+    }
+
+    public function getDeptFk(): ?Department
+    {
+        return $this->deptFk;
+    }
+
+    public function setDeptFk(?Department $deptFk): static
+    {
+        $this->deptFk = $deptFk;
+
+        return $this;
+    }
+
+    public function getRegion(): ?Region
+    {
+        return $this->region;
+    }
+
+    public function setRegion(?Region $region): static
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    public function getCountry(): ?Country
+    {
+        return $this->country;
+    }
+
+    public function setCountry(?Country $country): static
+    {
+        $this->country = $country;
 
         return $this;
     }

@@ -46,5 +46,23 @@ final class IndexController extends AbstractController
        return new JsonResponse($jsonData, 200, [], true);
     }
 
+    // get average turnover per salon in statistic when data is available in turnover table ans show in statistic table
+    // #[Route('/turnover/average', name: 'app_turnover_average')]
+    // public function getAverageTurnover(
+    //     TurnoverRepository $turnoverRepository,
+    //     SerializerInterface $serializer
+    // ): JsonResponse
+    // {
+    //     $data = $turnoverRepository->getAverageTurnover();
+    //     $jsonData = $serializer->serialize($data, 'json', ['groups' => 'turnover:read']);
+
+    //     // Assuming $data is an array of turnover records, calculate the average
+    //     $totalAmount = 0;
+       
+    //     if ($data) {
+    //         $region_avg_turnover = 
+    //     }
+    // }
+
 
 }
