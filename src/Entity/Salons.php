@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\SalonsRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: SalonsRepository::class)]
 class Salons
@@ -12,24 +13,31 @@ class Salons
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['salons:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['salons:read'])]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
+     #[Groups(['salons:read'])]
     private ?string $address = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Groups(['salons:read'])]
     private ?\DateTime $opening_date = null;
 
     #[ORM\Column]
+     #[Groups(['salons:read'])]
     private ?int $no_employees_full_time = null;
 
     #[ORM\Column(length: 255)]
+     #[Groups(['salons:read'])]
     private ?string $rep_name = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['salons:read'])]
     private ?string $rep_first_name = null;
 
     public function getId(): ?int

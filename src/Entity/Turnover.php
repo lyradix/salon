@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\TurnoverRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: TurnoverRepository::class)]
 class Turnover
@@ -12,18 +13,23 @@ class Turnover
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['turnover:read'])]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Groups(['turnover:read'])]
     private ?\DateTime $date = null;
 
     #[ORM\Column]
+    #[Groups(['turnover:read'])]    
     private ?float $amount = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?salons $salon_fk = null;
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]  
+    #[Groups(['turnover:read'])] 
+    private ?Salons $salon_fk = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['turnover:read'])]
     private ?string $dept_region = null;
 
     public function getId(): ?int
@@ -55,12 +61,12 @@ class Turnover
         return $this;
     }
 
-    public function getSalonFk(): ?salons
+    public function getSalonFk(): ?Salons
     {
         return $this->salon_fk;
     }
 
-    public function setSalonFk(?salons $salon_fk): static
+    public function setSalonFk(?Salons $salon_fk): static
     {
         $this->salon_fk = $salon_fk;
 
