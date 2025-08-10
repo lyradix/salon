@@ -42,14 +42,17 @@ class Salons
 
     #[ORM\ManyToOne(targetEntity: Department::class)]
     #[ORM\JoinColumn(name: "dept_fk_id", referencedColumnName: "id")]
+        #[Groups(['salons:read'])]
     private ?Department $deptFk = null;
 
     #[ORM\ManyToOne(targetEntity: Region::class)]
     #[ORM\JoinColumn(name: "region_FK_id", referencedColumnName: "id")]
+    #[Groups(['salons:read'])]
     private ?Region $region = null;
 
     #[ORM\ManyToOne(targetEntity: Country::class)]
     #[ORM\JoinColumn(name: "country_FK_id", referencedColumnName: "id")]
+    #[Groups(['salons:read'])]
     private ?Country $country = null;
 
     public function getId(): ?int
